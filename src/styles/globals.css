@@ -1,0 +1,194 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Baloo 2', 'Fredoka', 'Trebuchet MS', 'Comic Sans MS', system-ui, sans-serif;
+  --color-ww-ink: #2b1b5a;
+  --color-ww-grape: #7c3aed;
+  --color-ww-pink: #ff5fa2;
+  --color-ww-sun: #ffd23f;
+  --color-ww-mint: #3ddbb0;
+  --color-ww-sky: #46b6ff;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: #1b1040;
+  font-family: var(--font-display);
+  color: #fff;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: none;
+}
+
+canvas {
+  display: block;
+  touch-action: none;
+  outline: none;
+}
+
+/* Safe area helpers */
+.safe-pad {
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 238, 255, 0.98));
+  color: var(--color-ww-ink);
+  border-radius: 28px;
+  box-shadow:
+    0 10px 0 rgba(43, 27, 90, 0.18),
+    0 24px 50px rgba(20, 8, 60, 0.35);
+  border: 4px solid #fff;
+}
+
+.chunky-btn {
+  position: relative;
+  border-radius: 20px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 0.65rem 1.4rem;
+  color: #fff;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 6px 0 rgba(0, 0, 0, 0.25),
+    0 12px 18px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    filter 0.15s ease;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.chunky-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.chunky-btn:active {
+  transform: translateY(5px);
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.25),
+    0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.chunky-btn:disabled {
+  filter: grayscale(0.9) brightness(0.9);
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-grape {
+  background: linear-gradient(180deg, #9d5cff, #6d28d9);
+}
+.btn-pink {
+  background: linear-gradient(180deg, #ff86bd, #f0408a);
+}
+.btn-sun {
+  background: linear-gradient(180deg, #ffd84d, #ff9f1c);
+}
+.btn-mint {
+  background: linear-gradient(180deg, #4de8bd, #14b88b);
+}
+.btn-sky {
+  background: linear-gradient(180deg, #5fc4ff, #2a8ff0);
+}
+.btn-ghost {
+  background: linear-gradient(180deg, #7b6aa8, #54437f);
+}
+
+.logo-text {
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  -webkit-text-stroke: 3px #2b1b5a;
+  paint-order: stroke fill;
+  text-shadow:
+    0 6px 0 #2b1b5a,
+    0 12px 20px rgba(0, 0, 0, 0.35);
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pop-in {
+  animation: pop-in 0.35s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+.float-y {
+  animation: float-y 3s ease-in-out infinite;
+}
+
+@keyframes countdown-pop {
+  0% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.2;
+  }
+}
+.countdown-pop {
+  animation: countdown-pop 0.95s ease-out both;
+}
+
+@keyframes toast-in {
+  0% {
+    transform: translateY(-14px) scale(0.9);
+    opacity: 0;
+  }
+  15%,
+  85% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+}
+.toast-anim {
+  animation: toast-in 2s ease both;
+}
+
+.scroll-y {
+  overflow-y: auto;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+input[type='range'] {
+  accent-color: #7c3aed;
+  touch-action: pan-x;
+}

@@ -1,0 +1,58 @@
+import type { LevelConfig } from '../../../types/level';
+import { coinArc, coinLine, plat } from '../LevelConfig';
+
+/** Furnace Run — hammers on conveyors, a ferry over lava, spinning bars, disappearing tiles. */
+export const lava01: LevelConfig = {
+  id: 'lava-01',
+  world: 'lava',
+  name: 'Furnace Run',
+  index: 1,
+  difficulty: 3,
+  waypoints: [
+    [0, 0, 2],
+    [0, 0, -206],
+  ],
+  spawn: [0, 0, 1],
+  finish: [0, 0, -206],
+  killY: -14,
+  parTime: 75,
+  aiSkill: 0.9,
+  laneWidth: 2,
+  platforms: [
+    plat(0, -6, 16, 20),
+    plat(0, -34, 10, 36, 0, { surface: 'conveyor', dir: [0, 1], speed: 3.5, color: '#6b5560' }),
+    plat(0, -76, 10, 18, 0, { color: '#7a5a4a' }),
+    plat(0, -95, 6, 20, 0, { color: '#4a3f4d' }),
+    plat(0, -112, 14, 14, 0, { color: '#8a5a3a' }),
+    plat(0, -132, 8, 22, 0, { surface: 'conveyor', dir: [0, 1], speed: 4, color: '#6b5560' }),
+    plat(0, -153, 12, 20, 0, { color: '#7a5a4a' }),
+    plat(0, -196, 18, 42, 0, { color: '#65515b' }),
+  ],
+  obstacles: [
+    { type: 'hammer', pos: [0, 0, -26], period: 2.8, amp: 0.8, length: 6.5, phase: 0 },
+    { type: 'hammer', pos: [0, 0, -38], period: 2.8, amp: 0.8, length: 6.5, phase: Math.PI },
+    { type: 'hammer', pos: [0, 0, -48], period: 2.8, amp: 0.8, length: 6.5, phase: 1.5 },
+    { type: 'mover', from: [0, 0, -55], to: [0, 0, -65], size: [6, 1, 6], period: 7, phase: 0 },
+    { type: 'bar', pos: [0, 0, -72], length: 8, speed: 1.7, phase: 0 },
+    { type: 'bar', pos: [0, 0, -80], length: 8, speed: -1.7, phase: 1 },
+    { type: 'hammer', pos: [0, 0, -91], period: 2.6, amp: 0.7, length: 6, phase: 0 },
+    { type: 'hammer', pos: [0, 0, -99], period: 2.6, amp: 0.7, length: 6, phase: Math.PI },
+    { type: 'wall', from: [-3, 0, -127], to: [3, 0, -127], size: [3.4, 3, 1.4], period: 3.2, phase: 0 },
+    { type: 'wall', from: [-3, 0, -137], to: [3, 0, -137], size: [3.4, 3, 1.4], period: 3.2, phase: 1.6 },
+    { type: 'tile', pos: [0, 0, -165], size: [6, 1, 4], on: 3.8, off: 1.6, phase: 0 },
+    { type: 'tile', pos: [0, 0, -169], size: [6, 1, 4], on: 3.8, off: 1.6, phase: 2.2 },
+    { type: 'tile', pos: [0, 0, -173], size: [6, 1, 4], on: 3.8, off: 1.6, phase: 4.4 },
+    { type: 'tile', pos: [0, 0, -177], size: [6, 1, 4], on: 3.8, off: 1.6, phase: 6.6 },
+    { type: 'hammer', pos: [0, 0, -186], period: 2.4, amp: 0.85, length: 6.5, phase: 0 },
+    { type: 'hammer', pos: [0, 0, -194], period: 2.4, amp: 0.85, length: 6.5, phase: Math.PI },
+  ],
+  checkpoints: [{ pos: [0, 0, -76] }, { pos: [0, 0, -112] }, { pos: [0, 0, -153] }, { pos: [0, 0, -181] }],
+  coins: [
+    ...coinLine(0, 1.4, -12, 0, 1.4, -50, 9),
+    ...coinArc(0, 1.4, -54, -68, 2.5, 5),
+    ...coinLine(0, 1.4, -74, 0, 1.4, -106, 7),
+    ...coinLine(0, 1.4, -122, 0, 1.4, -146, 6),
+    ...coinLine(0, 1.4, -156, 0, 1.4, -180, 5),
+    ...coinLine(-4, 1.4, -186, 4, 1.4, -202, 4),
+  ],
+};
